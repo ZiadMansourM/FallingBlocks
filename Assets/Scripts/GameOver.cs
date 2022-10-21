@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     public GameObject gameOverScreen;
+	public Text gameState;
 	public Text secondsSurvivedUI;
 	bool gameOver;
 
@@ -28,6 +29,7 @@ public class GameOver : MonoBehaviour
     void OnGameOver() {
 		gameOverScreen.SetActive(true);
 		secondsSurvivedUI.text = Mathf.RoundToInt(Time.timeSinceLevelLoad).ToString();
+        gameState.text = "Game Over";
 		gameOver = true;
 	}
 }

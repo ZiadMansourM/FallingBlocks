@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 7;
     public event System.Action OnPlayerDeath;
+    public event System.Action OnPlayerWin;
 
     float screenHalfWidth;
 
@@ -29,6 +30,12 @@ public class PlayerController : MonoBehaviour
 		
         if (transform.position.x > screenHalfWidth)
             transform.position = new Vector2(-screenHalfWidth, transform.position.y);
+        
+        if (Time.timeSinceLevelLoad >= 20) {
+            if (OnPlayerWin != null)
+                OnPlayerWin();
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D triggerCollider) {
